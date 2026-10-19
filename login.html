@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Trendy Wear BD</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#171717,#795b32)}
+.card{width:100%;max-width:390px;background:#fff;padding:25px;border-radius:18px;box-shadow:0 5px 25px #0004}
+.logo{text-align:center;font-size:27px;font-weight:bold;color:#a57528}
+.subtitle{text-align:center;color:#666;margin:8px 0 25px}
+.tabs{display:flex;gap:10px}
+.tabs button{flex:1;padding:12px;border:1px solid #ddd;border-radius:8px;background:#eee;font-weight:bold;cursor:pointer}
+.tabs button.active{background:#a57528;color:#fff}
+h2{margin-top:25px}
+label{display:block;margin:15px 0 7px}
+input{width:100%;padding:13px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+.submit{width:100%;padding:14px;margin-top:22px;background:#171717;color:#fff;border:0;border-radius:8px;font-size:16px;cursor:pointer}
+.home{display:block;text-align:center;margin-top:20px;color:#8a5d1b;text-decoration:none}
+#message{overflow-wrap:anywhere;font-size:14px;line-height:1.5}
+footer{text-align:center;color:#777;font-size:12px;margin-top:25px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">Trendy Wear BD</div>
+  <p class="subtitle">Your Fashion, Your Style</p>
+  <div class="tabs">
+    <button id="loginTab" class="active" type="button">Login</button>
+    <button id="signupTab" type="button">Sign Up</button>
+  </div>
+  <h2 id="heading">Welcome Back!</h2>
+  <p id="description">আপনার অ্যাকাউন্টে প্রবেশ করুন।</p>
+  <form id="authForm">
+    <div id="nameBox" hidden>
+      <label for="name">আপনার নাম</label>
+      <input id="name" type="text" autocomplete="name">
+    </div>
+    <label for="email">Email Address</label>
+    <input id="email" type="email" placeholder="আপনার ইমেইল লিখুন" autocomplete="email" required>
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="কমপক্ষে ৬ অক্ষর" minlength="6" autocomplete="current-password" required>
+    <button class="submit" id="submitButton" type="submit">Login</button>
+  </form>
+  <p id="message" role="status"></p>
+  <a class="home" href="index.html">← Home Page-এ ফিরে যান</a>
+  <footer>© 2026 Trendy Wear BD</footer>
+</div>
+<script>
+let mode="login";
+const loginTab=document.getElementById("loginTab");
+const signupTab=document.getElementById("signupTab");
+const heading=document.getElementById("heading");
+const description=document.getElementById("description");
+const nameBox=document.getElementById("nameBox");
+const nameInput=document.getElementById("name");
+const password=document.getElementById("password");
+const submitButton=document.getElementById("submitButton");
+const message=document.getElementById("message");
+function changeMode(newMode){
+  mode=newMode;
+  const signup=mode==="signup";
+  loginTab.classList.toggle("active",!signup);
+  signupTab.classList.toggle("active",signup);
+  nameBox.hidden=!signup;
+  nameInput.required=signup;
+  password.autocomplete=signup?"new-password":"current-password";
+  heading.textContent=signup?"Create Account":"Welcome Back!";
+  description.textContent=signup?"নতুন অ্যাকাউন্ট তৈরি করুন।":"আপনার অ্যাকাউন্টে প্রবেশ করুন।";
+  submitButton.textContent=signup?"Sign Up":"Login";
+  message.textContent="";
+}
+loginTab.addEventListener("click",()=>changeMode("login"));
+signupTab.addEventListener("click",()=>changeMode("signup"));
+document.getElementById("authForm").addEventListener("submit",function(event){
+  event.preventDefault();
+  message.style.color="#a15b00";
+  message.textContent="পেজটি তৈরি হয়েছে। আসল Login ও Sign Up চালু করতে Firebase সেটআপ করতে হবে।";
+});
+</script>
+</body>
+</html>
