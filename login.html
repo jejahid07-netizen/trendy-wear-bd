@@ -6,77 +6,176 @@
 <title>Login | Trendy Wear BD</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;padding:20px;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#171717,#795b32)}
-.card{width:100%;max-width:390px;background:#fff;padding:25px;border-radius:18px;box-shadow:0 5px 25px #0004}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7f7fb;font-family:Arial,sans-serif;padding:18px;color:#222}
+.card{width:100%;max-width:390px;background:#fff;padding:25px;border-radius:18px;box-shadow:0 5px 25px #0002}
 .logo{text-align:center;font-size:27px;font-weight:bold;color:#a57528}
-.subtitle{text-align:center;color:#666;margin:8px 0 25px}
+.subtitle{text-align:center;color:#666;margin:8px 0 24px}
 .tabs{display:flex;gap:10px}
-.tabs button{flex:1;padding:12px;border:1px solid #ddd;border-radius:8px;background:#eee;font-weight:bold;cursor:pointer}
-.tabs button.active{background:#a57528;color:#fff}
-h2{margin-top:25px}
-label{display:block;margin:15px 0 7px}
+.tabs button{flex:1;padding:12px;border:1px solid #ddd;border-radius:8px;background:#eee;font-weight:bold}
+.tabs button.active{background:#171717;color:white}
+h2{margin:24px 0 8px}
+label{display:block;margin:14px 0 6px}
 input{width:100%;padding:13px;border:1px solid #ccc;border-radius:8px;font-size:15px}
-.submit{width:100%;padding:14px;margin-top:22px;background:#171717;color:#fff;border:0;border-radius:8px;font-size:16px;cursor:pointer}
-.home{display:block;text-align:center;margin-top:20px;color:#8a5d1b;text-decoration:none}
-#message{overflow-wrap:anywhere;font-size:14px;line-height:1.5}
-footer{text-align:center;color:#777;font-size:12px;margin-top:25px}
+.submit{width:100%;padding:14px;margin-top:22px;background:#171717;color:#fff;border:0;border-radius:8px;font-size:16px}
+#message{margin-top:14px;line-height:1.5;font-size:14px;overflow-wrap:anywhere}
+.home{text-align:center;margin-top:18px;font-size:14px}
+.home a{color:#805b1d}
+.small{font-size:12px;color:#666;line-height:1.5;margin-top:14px}
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="logo">Trendy Wear BD</div>
-  <p class="subtitle">Your Fashion, Your Style</p>
-  <div class="tabs">
-    <button id="loginTab" class="active" type="button">Login</button>
-    <button id="signupTab" type="button">Sign Up</button>
-  </div>
-  <h2 id="heading">Welcome Back!</h2>
-  <p id="description">আপনার অ্যাকাউন্টে প্রবেশ করুন।</p>
-  <form id="authForm">
-    <div id="nameBox" hidden>
-      <label for="name">আপনার নাম</label>
-      <input id="name" type="text" autocomplete="name">
-    </div>
-    <label for="email">Email Address</label>
-    <input id="email" type="email" placeholder="আপনার ইমেইল লিখুন" autocomplete="email" required>
-    <label for="password">Password</label>
-    <input id="password" type="password" placeholder="কমপক্ষে ৬ অক্ষর" minlength="6" autocomplete="current-password" required>
-    <button class="submit" id="submitButton" type="submit">Login</button>
-  </form>
-  <p id="message" role="status"></p>
-  <a class="home" href="index.html">← Home Page-এ ফিরে যান</a>
-  <footer>© 2026 Trendy Wear BD</footer>
+<div class="logo">Trendy Wear BD</div>
+<p class="subtitle">Your Fashion, Your Style</p>
+
+<div class="tabs">
+<button id="loginTab" class="active" type="button">Login</button>
+<button id="signupTab" type="button">Sign Up</button>
 </div>
-<script>
-let mode="login";
-const loginTab=document.getElementById("loginTab");
-const signupTab=document.getElementById("signupTab");
-const heading=document.getElementById("heading");
-const description=document.getElementById("description");
-const nameBox=document.getElementById("nameBox");
-const nameInput=document.getElementById("name");
-const password=document.getElementById("password");
-const submitButton=document.getElementById("submitButton");
-const message=document.getElementById("message");
-function changeMode(newMode){
-  mode=newMode;
-  const signup=mode==="signup";
-  loginTab.classList.toggle("active",!signup);
-  signupTab.classList.toggle("active",signup);
-  nameBox.hidden=!signup;
-  nameInput.required=signup;
-  password.autocomplete=signup?"new-password":"current-password";
-  heading.textContent=signup?"Create Account":"Welcome Back!";
-  description.textContent=signup?"নতুন অ্যাকাউন্ট তৈরি করুন।":"আপনার অ্যাকাউন্টে প্রবেশ করুন।";
-  submitButton.textContent=signup?"Sign Up":"Login";
-  message.textContent="";
+
+<h2 id="heading">Welcome Back!</h2>
+<p id="description">তোমার অ্যাকাউন্টে লগইন করো।</p>
+
+<form id="authForm">
+<div id="nameBox" hidden>
+<label for="name">তোমার নাম</label>
+<input id="name" type="text" autocomplete="name">
+</div>
+
+<label for="email">Email Address</label>
+<input id="email" type="email" placeholder="তোমার ইমেইল লিখো" autocomplete="email" required>
+
+<label for="password">Password</label>
+<input id="password" type="password" placeholder="কমপক্ষে ৬ অক্ষর" minlength="6" autocomplete="current-password" required>
+
+<button class="submit" id="submitButton" type="submit">Login</button>
+</form>
+
+<p id="message" role="status"></p>
+<p class="home"><a href="index.html">Home Page-এ ফিরে যাও</a></p>
+<p class="small">একবার লগইন করলে একই ব্রাউজারে লগইন অবস্থা মনে রাখা হবে। ব্রাউজারের ডেটা মুছে ফেললে বা অন্য ব্রাউজার ব্যবহার করলে আবার লগইন লাগতে পারে।</p>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {
+getAuth,
+setPersistence,
+browserLocalPersistence,
+onAuthStateChanged,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+updateProfile
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyCwzWFL-jinFYxuCebNOGuxuDvgMzQG78",
+authDomain: "online-shop-b01b3.firebaseapp.com",
+projectId: "online-shop-b01b3",
+storageBucket: "online-shop-b01b3.firebasestorage.app",
+messagingSenderId: "85740681368",
+appId: "1:85740681368:web:45c1fd41e521469f96b8ed"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const form = document.getElementById("authForm");
+const loginTab = document.getElementById("loginTab");
+const signupTab = document.getElementById("signupTab");
+const heading = document.getElementById("heading");
+const description = document.getElementById("description");
+const nameBox = document.getElementById("nameBox");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const submitButton = document.getElementById("submitButton");
+const message = document.getElementById("message");
+
+let mode = "login";
+
+function showMessage(text, good = false) {
+message.textContent = text;
+message.style.color = good ? "#18733b" : "#b42318";
 }
-loginTab.addEventListener("click",()=>changeMode("login"));
-signupTab.addEventListener("click",()=>changeMode("signup"));
-document.getElementById("authForm").addEventListener("submit",function(event){
-  event.preventDefault();
-  message.style.color="#a15b00";
-  message.textContent="পেজটি তৈরি হয়েছে। আসল Login ও Sign Up চালু করতে Firebase সেটআপ করতে হবে।";
+
+function setMode(next) {
+mode = next;
+const signup = mode === "signup";
+
+loginTab.classList.toggle("active", !signup);
+signupTab.classList.toggle("active", signup);
+nameBox.hidden = !signup;
+nameInput.required = signup;
+
+heading.textContent = signup ? "Create Account" : "Welcome Back!";
+description.textContent = signup
+? "নতুন অ্যাকাউন্ট তৈরি করো।"
+: "তোমার অ্যাকাউন্টে লগইন করো।";
+
+submitButton.textContent = signup ? "Sign Up" : "Login";
+passwordInput.autocomplete = signup ? "new-password" : "current-password";
+showMessage("");
+}
+
+loginTab.addEventListener("click", () => setMode("login"));
+signupTab.addEventListener("click", () => setMode("signup"));
+
+onAuthStateChanged(auth, user => {
+if (user) {
+window.location.replace("index.html");
+}
+});
+
+form.addEventListener("submit", async event => {
+event.preventDefault();
+
+submitButton.disabled = true;
+submitButton.textContent = "Please wait...";
+showMessage("");
+
+try {
+await setPersistence(auth, browserLocalPersistence);
+
+const email = emailInput.value.trim();
+const password = passwordInput.value;
+
+if (mode === "signup") {
+const credential = await createUserWithEmailAndPassword(
+auth, email, password
+);
+
+const displayName = nameInput.value.trim();
+
+if (displayName) {
+await updateProfile(credential.user, {
+displayName: displayName
+});
+}
+} else {
+await signInWithEmailAndPassword(auth, email, password);
+}
+
+showMessage("সফল হয়েছে! Home Page-এ নেওয়া হচ্ছে…", true);
+window.location.replace("index.html");
+
+} catch (error) {
+const messages = {
+"auth/email-already-in-use": "এই ইমেইলে আগে অ্যাকাউন্ট খোলা হয়েছে। Login করো।",
+"auth/invalid-email": "সঠিক ইমেইল ঠিকানা লিখো।",
+"auth/weak-password": "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে।",
+"auth/invalid-credential": "ইমেইল বা পাসওয়ার্ড ঠিক নয়।",
+"auth/network-request-failed": "ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করো।",
+"auth/operation-not-allowed": "Firebase-এ Email/Password sign-in চালু আছে কি না পরীক্ষা করো।",
+"auth/unauthorized-domain": "Firebase Authorized domains-এ ওয়েবসাইটের ডোমেইন যোগ করো।"
+};
+
+showMessage(messages[error.code] || ("Login করা যায়নি: " + error.message));
+
+} finally {
+submitButton.disabled = false;
+submitButton.textContent = mode === "signup" ? "Sign Up" : "Login";
+}
 });
 </script>
 </body>
